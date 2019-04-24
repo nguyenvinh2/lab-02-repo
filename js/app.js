@@ -23,7 +23,8 @@ function HornCollection() {
 
   this.renderHorns = () => {
     this.hornList.forEach(horn => {
-      const $imgDiv = $(`<div id=${horn.title}></div>`);
+      // const $imgDiv = $(`<div id=${horn.title} class="images" style="background-image: url('${horn.image}')"></div>`);
+      const $imgDiv = $(`<div id=${horn.title}"></div>`);
       $imgDiv.attr('id', horn.title);
       const $img = $('<img/>');
       $img.attr('src', horn.image);
