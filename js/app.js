@@ -10,26 +10,39 @@ function Horn(hornObject) {
 
 function HornCollection() {
   this.hornList = [];
+  this.keywords = [];
 
   this.getHorns = () => {
     $.get('data/page-1.json', 'json')
       .then(data => {
         data.forEach(animal => {
           this.hornList.push(new Horn(animal));
+          if (!this.keywords.includes(animal.keyword)) {
+            this.keywords.push(animal.keyword);
+          }
         });
         this.renderHorns();
+        this.renderfilterHorns();
+        filterHorn();
       });
   };
 
   this.renderHorns = () => {
+    $('#horns').empty();
     this.hornList.forEach(horn => {
-      // const $imgDiv = $(`<div id=${horn.title} class="images" style="background-image: url('${horn.image}')"></div>`);
-      const $imgDiv = $(`<div id=${horn.title}"></div>`);
-      $imgDiv.attr('id', horn.title);
+      const $imgDiv = $(`<div class="image ${horn.keyword}"></div>`);
       const $img = $('<img/>');
       $img.attr('src', horn.image);
       $img.appendTo($imgDiv);
       $imgDiv.appendTo($('#horns'));
+    });
+  };
+
+  this.renderfilterHorns = () => {
+    $(`<option>all</option>`).appendTo($('select'));
+    this.keywords.forEach(keyword => {
+      const $option = $(`<option>${keyword}</option>`);
+      $option.appendTo('select');
     });
 
   };
@@ -39,6 +52,16 @@ const Horns = new HornCollection();
 
 Horns.getHorns();
 
-console.log(Horns.hornList);
+function filterHorn() {
+  $('select').change(() => {
+    let $filterValue = $('select').val();
+    if ($filterValue === 'all') {
+      $('.image').show();
+    } else {
+      $('.image').hide();
+      $(`.${$filterValue}`).show();
+    }
+  });
+}
 
 
