@@ -1,11 +1,11 @@
 body {
   width: 1200px;
   margin: 0 auto;
+  text-align: center;
 }
 
 img {
   position: relative;
-  float: left;
   margin: 25px;
   outline: solid darkgray 1px;
   background-color: darkgray;

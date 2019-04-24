@@ -32,6 +32,8 @@ function HornCollection() {
     this.hornList.forEach(horn => {
       const $imgDiv = $(`<div class="image ${horn.keyword}"></div>`);
       const $img = $('<img/>');
+      const $title = $(`<h2>${horn.title.toUpperCase()}</h2>`);
+      $title.appendTo($imgDiv);
       $img.attr('src', horn.image);
       $img.appendTo($imgDiv);
       $imgDiv.appendTo($('#horns'));
