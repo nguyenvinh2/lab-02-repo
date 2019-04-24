@@ -1,0 +1,17 @@
+body {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+/*https://stackoverflow.com/questions/19414856/how-can-i-make-all-images-of-different-height-and-width-the-same-via-css*/
+img {
+  position: relative;
+  float: left;
+  width: 300px;
+  height: 300px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 25px;
+  outline: solid black 1px;
+}
