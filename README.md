@@ -44,32 +44,32 @@
     
     Actual time needed to complete: 30 minutes
 
-Number and name of feature: 2. Templating
+## Number and name of feature: 2. Templating
 
-Estimate of time needed to complete: 30 minutes
+    Estimate of time needed to complete: 30 minutes
 
-Start time: 09:00
+    Start time: 09:00
 
-Finish time: 09:45
+    Finish time: 09:45
 
-Actual time needed to complete: 45 minutes
+    Actual time needed to complete: 45 minutes
 
-Number and name of feature: 3. Styling with Flexbox
+## Number and name of feature: 3. Styling with Flexbox
 
-Estimate of time needed to complete: 20 minute
+    Estimate of time needed to complete: 20 minute
 
-Start time: 10:00
+    Start time: 10:00
 
-Finish time: 10:15
+    Finish time: 10:15
 
-Actual time needed to complete: 15 minutes
+    Actual time needed to complete: 15 minutes
 
-Number and name of feature: 4. Sorting
+## Number and name of feature: 4. Sorting
 
-Estimate of time needed to complete: 1 hour
+    Estimate of time needed to complete: 1 hour
 
-Start time: 9:15
+    Start time: 9:15
 
-Finish time: 10:00
+    Finish time: 10:00
 
-Actual time needed to complete: 45 minutes
+    Actual time needed to complete: 45 minutes
