@@ -4,8 +4,8 @@ h2 {
   font-size: 18px;
 }
 
-p {
-  font-size: 12px;
+.image p {
+  font-size: 16px;
   max-width: 300px;
   font-family: 'Dosis', sans-serif;
 }
