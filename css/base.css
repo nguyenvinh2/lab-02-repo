@@ -1,6 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe');
+@import url('https://fonts.googleapis.com/css?family=Dosis|ZCOOL+KuaiLe');
+
 h2 {
   font-size: 18px;
+}
+
+p {
+  font-size: 12px;
+  max-width: 300px;
+  font-family: 'Dosis', sans-serif;
 }
 
 body {
