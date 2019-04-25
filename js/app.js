@@ -18,6 +18,7 @@ function HornCollection() {
     $.get(page, null, null, 'json')
       .then(data => {
         this.hornList = [];
+        this.keywords = [];
         data.forEach(animal => {
           this.hornList.push(new Horn(animal));
           this.hornsAmount.push(animal.horns);
