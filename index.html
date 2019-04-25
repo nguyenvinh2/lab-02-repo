@@ -13,17 +13,29 @@
 </head>
 
 <body>
-  <h1>
-    Horns Gallery
-  </h1>
-  <form>
-    <label>Filter by Keyword:</label>
-    <select id="keyword"></select>
-    <label>Sort:</label>
-    <select id="sort"></select>
-  </form>
-  <div id="horns">
-  </div>
+  <header>
+    <div class="header-container">
+      <h1 class="header-title">
+        Horns Gallery
+      </h1>
+      <form class="header-selector">
+        <div class="header-selector_item">
+          <label>Filter by Keyword:</label>
+          <select id="keyword"></select>
+        </div>
+        <div class="header-selector_item">
+          <label>Sort:</label>
+          <select id="sort"></select>
+        </div>
+      </form>
+    </div>
+  </header>
+  <main id="horns"></main>
+  <footer class="footer-container">
+    <p>Created by:</p>
+    <p>Vinh Nguyen</p>
+    <p>David Marchante</p>
+  </footer>
   <script src="https://code.jquery.com/jquery-3.4.0.min.js"
     integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
     <script src="js/app.js"></script>

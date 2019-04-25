@@ -1,7 +1,26 @@
-.image {
-  font-size: 10px;
+.header-container {
+  padding-top: 25px;
 }
 
-select {
+.header-title{
+  font-size: 36px;
+  margin-bottom: 25px;
+}
+
+.header-selector {
   margin-bottom: 50px;
+}
+
+.header-selector_item {
+  margin-right: 15px;
+  margin-bottom: 25px;
+}
+
+.image {
+  font-size: 10px;
+  margin-bottom: 50px;
+}
+
+.footer-container {
+  height: 100px;
 }

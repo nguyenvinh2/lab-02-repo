@@ -1,17 +1,56 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe');
+h2 {
+  font-size: 18px;
+}
 
 body {
   margin: 0 auto;
   text-align: center;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'ZCOOL KuaiLe', sans-serif;
+  background-color: #d9f7ae;
+}
+
+header, footer {
+  background-color: #8ec2ff;
+}
+
+header {
+  margin-bottom: 25px;
+}
+
+footer {
+  padding-top: 25px;
 }
 
 img {
   position: relative;
   margin: 25px;
-  outline: solid darkgray 1px;
+  outline: solid #8ec2ff 5px;
   background-color: darkgray;
   width: auto;
   height: 175px;
   object-fit: scale-down;
+}
+
+/* Taken from reference: https://codepen.io/vanss472/pen/QvGMaw*/
+select {
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid #d1d1d1;
+  box-shadow: inset 0px 1px 8px #00000033;
+  font-size: 14px;
+  padding: 10px 5px;
+  transition: .18s ease-out;
+  margin: 5px 5px;
+  width: 75px;
+}
+
+select:hover {
+  box-shadow: inset 1px 2px 8px #00000005;
+}
+
+select:focus {
+  color: #4b515d;
+  border: 1px solid #B8B6B6;
+  box-shadow: inset 1px 2px 4px #00000003, 0px 0px 8px #00000033;
 }
