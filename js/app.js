@@ -19,17 +19,14 @@ function HornCollection() {
       .then(data => {
         data.forEach(animal => {
           this.hornList.push(new Horn(animal));
-          if (!this.keywords.includes(animal.keyword)) {
-            this.keywords.push(animal.keyword);
-          }
-
+          this.keywords.push(animal.keyword);
           this.hornsAmount.push(animal.horns);
         });
         this.renderHorns();
         this.renderfilterHorns();
         this.renderSortHorns();
         filterHorn();
-        sortHorns(this.keywords, this.hornsAmount);
+        sortHorns();
       });
   };
 
@@ -79,17 +76,19 @@ function filterHorn() {
   });
 }
 
-function sortHorns(keywords, horns) {
+function sortHorns() {
   $('#sort').change(() => {
     let $sortValue = $('#sort').val();
     if ($sortValue === 'none') {
       $('.image').show();
     } else if ($sortValue === 'alphabetical') {
       $('.image').hide();
-      keywords.sort();
+      Horns.hornList.sort((a, b) => a.keyword.localeCompare(b.keyword));
+      Horns.renderHorns();
     } else if ($sortValue === 'numberofhorns') {
       $('.image').hide();
-      horns.sort((a, b) => a - b);
+      Horns.hornList.sort((a, b) => a.horns - b.horns);
+      Horns.renderHorns();
     }
   });
 }
