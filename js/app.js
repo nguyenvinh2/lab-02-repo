@@ -14,8 +14,8 @@ function HornCollection() {
   this.hornsAmount = [];
   this.sortOptions = ['alphabetical', 'numberofhorns'];
 
-  this.getHorns = () => {
-    $.get('data/page-1.json', 'json')
+  this.getHorns = (page) => {
+    $.get(page, null, null, 'json')
       .then(data => {
         data.forEach(animal => {
           this.hornList.push(new Horn(animal));
@@ -31,15 +31,8 @@ function HornCollection() {
   };
 
   this.renderHorns = () => {
-    $('#horns').empty();
     this.hornList.forEach(horn => {
-      const $imgDiv = $(`<div class="image ${horn.keyword}"></div>`);
-      const $img = $('<img/>');
-      const $title = $(`<h2>${horn.title.toUpperCase()}</h2>`);
-      $title.appendTo($imgDiv);
-      $img.attr('src', horn.image);
-      $img.appendTo($imgDiv);
-      $imgDiv.appendTo($('#horns'));
+      $('#horns').append(templateHandle(horn));
     });
   };
 
@@ -60,9 +53,13 @@ function HornCollection() {
   };
 }
 
-const Horns = new HornCollection();
+const horns = new HornCollection();
 
-Horns.getHorns();
+horns.getHorns('data/page-1.json');
+
+const horns2 = new HornCollection;
+
+horns2.getHorns('data/page-2.json');
 
 function filterHorn() {
   $('#keyword').change(() => {
@@ -74,6 +71,19 @@ function filterHorn() {
       $(`.${$filterValue}`).show();
     }
   });
+}
+
+function templateHandle(horn) {
+  let context = {
+    title: horn.title.toUpperCase(),
+    path: horn.image,
+    keyword: horn.keyword
+  };
+
+  let $source = $('#entry').html();
+  console.log($source);
+  let template = Handlebars.compile($source);
+  return template(context);
 }
 
 function sortHorns() {
