@@ -13,7 +13,7 @@ function HornCollection() {
   this.keywords = [];
 
   this.getHorns = () => {
-    $.get('data/page-1.json', 'json')
+    $.get('data/page-1.json', null, null, 'json')
       .then(data => {
         data.forEach(animal => {
           this.hornList.push(new Horn(animal));
@@ -30,13 +30,14 @@ function HornCollection() {
   this.renderHorns = () => {
     $('#horns').empty();
     this.hornList.forEach(horn => {
-      const $imgDiv = $(`<div class="image ${horn.keyword}"></div>`);
-      const $img = $('<img/>');
-      const $title = $(`<h2>${horn.title.toUpperCase()}</h2>`);
-      $title.appendTo($imgDiv);
-      $img.attr('src', horn.image);
-      $img.appendTo($imgDiv);
-      $imgDiv.appendTo($('#horns'));
+      // const $imgDiv = $(`<div class="image ${horn.keyword}"></div>`);
+      // const $img = $('<img/>');
+      // const $title = $(`<h2>${horn.title.toUpperCase()}</h2>`);
+      // $title.appendTo($imgDiv);
+      // $img.attr('src', horn.image);
+      // $img.appendTo($imgDiv);
+      // $imgDiv.appendTo($('#horns'));
+      $('#horns').append(templateHandle(horn));
     });
   };
 
@@ -46,7 +47,6 @@ function HornCollection() {
       const $option = $(`<option>${keyword}</option>`);
       $option.appendTo('select');
     });
-
   };
 }
 
@@ -66,4 +66,16 @@ function filterHorn() {
   });
 }
 
+function templateHandle(horn) {
+  let context = {
+    title: horn.title.toUpperCase(),
+    path: horn.image,
+    keyword: horn.keyword
+  };
+
+  let $source = $('#entry').html();
+  console.log($source);
+  let template = Handlebars.compile($source);
+  return template(context);
+}
 
