@@ -11,40 +11,44 @@ function Horn(hornObject) {
 function HornCollection() {
   this.hornList = [];
   this.keywords = [];
+  this.hornsAmount = [];
+  this.sortOptions = ['alphabetical', 'numberofhorns'];
 
   this.getHorns = (page) => {
     $.get(page, null, null, 'json')
       .then(data => {
         data.forEach(animal => {
           this.hornList.push(new Horn(animal));
-          if (!this.keywords.includes(animal.keyword)) {
-            this.keywords.push(animal.keyword);
-          }
+          this.keywords.push(animal.keyword);
+          this.hornsAmount.push(animal.horns);
         });
         this.renderHorns();
         this.renderfilterHorns();
+        this.renderSortHorns();
         filterHorn();
+        sortHorns();
       });
   };
 
   this.renderHorns = () => {
     this.hornList.forEach(horn => {
-      // const $imgDiv = $(`<div class="image ${horn.keyword}"></div>`);
-      // const $img = $('<img/>');
-      // const $title = $(`<h2>${horn.title.toUpperCase()}</h2>`);
-      // $title.appendTo($imgDiv);
-      // $img.attr('src', horn.image);
-      // $img.appendTo($imgDiv);
-      // $imgDiv.appendTo($('#horns'));
       $('#horns').append(templateHandle(horn));
     });
   };
 
   this.renderfilterHorns = () => {
-    $(`<option>all</option>`).appendTo($('select'));
+    $(`<option>all</option>`).appendTo($('#keyword'));
     this.keywords.forEach(keyword => {
       const $option = $(`<option>${keyword}</option>`);
-      $option.appendTo('select');
+      $option.appendTo('#keyword');
+    });
+  };
+
+  this.renderSortHorns = () => {
+    $(`<option>none</option>`).appendTo($('#sort'));
+    this.sortOptions.forEach(sortOption => {
+      const $option = $(`<option>${sortOption}</option>`);
+      $option.appendTo('#sort');
     });
   };
 }
@@ -58,8 +62,8 @@ const horns2 = new HornCollection;
 horns2.getHorns('data/page-2.json');
 
 function filterHorn() {
-  $('select').change(() => {
-    let $filterValue = $('select').val();
+  $('#keyword').change(() => {
+    let $filterValue = $('#keyword').val();
     if ($filterValue === 'all') {
       $('.image').show();
     } else {
@@ -82,3 +86,19 @@ function templateHandle(horn) {
   return template(context);
 }
 
+function sortHorns() {
+  $('#sort').change(() => {
+    let $sortValue = $('#sort').val();
+    if ($sortValue === 'none') {
+      $('.image').show();
+    } else if ($sortValue === 'alphabetical') {
+      $('.image').hide();
+      Horns.hornList.sort((a, b) => a.keyword.localeCompare(b.keyword));
+      Horns.renderHorns();
+    } else if ($sortValue === 'numberofhorns') {
+      $('.image').hide();
+      Horns.hornList.sort((a, b) => a.horns - b.horns);
+      Horns.renderHorns();
+    }
+  });
+}
