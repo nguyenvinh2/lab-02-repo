@@ -14,29 +14,35 @@ function HornCollection() {
   this.hornsAmount = [];
   this.sortOptions = ['alphabetical', 'numberofhorns'];
 
-  this.getHorns = (page) => {
+  this.getHorns = (page, pageNumber) => {
     $.get(page, null, null, 'json')
       .then(data => {
+        this.hornList = [];
         data.forEach(animal => {
           this.hornList.push(new Horn(animal));
-          this.keywords.push(animal.keyword);
           this.hornsAmount.push(animal.horns);
+          if (!this.keywords.includes(animal.keyword)) {
+            this.keywords.push(animal.keyword);
+          }
         });
-        this.renderHorns();
         this.renderfilterHorns();
         this.renderSortHorns();
+        this.renderPageOptions(pageNumber);
         filterHorn();
+        sortByAlpha();
         sortHorns();
       });
   };
 
   this.renderHorns = () => {
+    $('#horns').empty();
     this.hornList.forEach(horn => {
       $('#horns').append(templateHandle(horn));
     });
   };
 
   this.renderfilterHorns = () => {
+    $('#filter').empty();
     $(`<option>all</option>`).appendTo($('#keyword'));
     this.keywords.forEach(keyword => {
       const $option = $(`<option>${keyword}</option>`);
@@ -45,21 +51,27 @@ function HornCollection() {
   };
 
   this.renderSortHorns = () => {
-    $(`<option>none</option>`).appendTo($('#sort'));
+    $('#sort').empty();
     this.sortOptions.forEach(sortOption => {
       const $option = $(`<option>${sortOption}</option>`);
       $option.appendTo('#sort');
     });
   };
+
+  this.renderPageOptions = number => {
+    $('#page').empty();
+    for (let i = 1; i <= 2; i++) {
+      const $option = $(`<option>${i}</option>`);
+      $option.appendTo('#page');
+    }
+    $('#page').val(number);
+    pageSelect();
+  };
 }
 
-const horns = new HornCollection();
+const Horns = new HornCollection();
 
-horns.getHorns('data/page-1.json');
-
-const horns2 = new HornCollection;
-
-horns2.getHorns('data/page-2.json');
+Horns.getHorns('data/page-1.json', 1);
 
 function filterHorn() {
   $('#keyword').change(() => {
@@ -81,7 +93,6 @@ function templateHandle(horn) {
   };
 
   let $source = $('#entry').html();
-  console.log($source);
   let template = Handlebars.compile($source);
   return template(context);
 }
@@ -89,16 +100,31 @@ function templateHandle(horn) {
 function sortHorns() {
   $('#sort').change(() => {
     let $sortValue = $('#sort').val();
-    if ($sortValue === 'none') {
-      $('.image').show();
-    } else if ($sortValue === 'alphabetical') {
-      $('.image').hide();
-      Horns.hornList.sort((a, b) => a.keyword.localeCompare(b.keyword));
-      Horns.renderHorns();
+    if ($sortValue === 'alphabetical') {
+      sortByAlpha();
     } else if ($sortValue === 'numberofhorns') {
-      $('.image').hide();
-      Horns.hornList.sort((a, b) => a.horns - b.horns);
-      Horns.renderHorns();
+      sortByNumber();
+    }
+  });
+}
+
+function sortByAlpha() {
+  Horns.hornList.sort((a, b) => a.title.localeCompare(b.title));
+  Horns.renderHorns();
+}
+
+function sortByNumber() {
+  Horns.hornList.sort((a, b) => a.horns - b.horns);
+  Horns.renderHorns();
+}
+
+function pageSelect() {
+  $('#page').change(() => {
+    let $pageValue = $('#page').val();
+    if ($pageValue === '1') {
+      Horns.getHorns('data/page-1.json', $pageValue);
+    } else if ($pageValue === '2') {
+      Horns.getHorns('data/page-2.json', $pageValue);
     }
   });
 }
