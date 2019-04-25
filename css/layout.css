@@ -1,0 +1,12 @@
+.header-selector {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+#horns {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
