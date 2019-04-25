@@ -40,6 +40,7 @@ function HornCollection() {
     this.hornList.forEach(horn => {
       $('#horns').append(templateHandle(horn));
     });
+    runFilter($('#keyword').val());
   };
 
   this.renderfilterHorns = () => {
@@ -77,13 +78,17 @@ Horns.getHorns('data/page-1.json', 1);
 function filterHorn() {
   $('#keyword').change(() => {
     let $filterValue = $('#keyword').val();
-    if ($filterValue === 'all') {
-      $('.image').show();
-    } else {
-      $('.image').hide();
-      $(`.${$filterValue}`).show();
-    }
+    runFilter($filterValue);
   });
+}
+
+function runFilter(filterValue) {
+  if (filterValue === 'all') {
+    $('.image').show();
+  } else {
+    $('.image').hide();
+    $(`.${filterValue}`).show();
+  }
 }
 
 function templateHandle(horn) {
