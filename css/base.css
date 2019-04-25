@@ -49,7 +49,7 @@ select {
   padding: 10px 5px;
   transition: .18s ease-out;
   margin: 5px 5px;
-  width: 75px;
+  width: 150px;
 }
 
 select:hover {
