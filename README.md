@@ -1,31 +1,36 @@
 # lab-02-repo
 
-Number and name of feature: 1. Display Images
+# Lab 2
 
-Estimate of time needed to complete: 20 minutes
+## Number and name of feature: 1. Display Images
 
-Start time: 9:10am
+    Estimate of time needed to complete: 20 minutes
 
-Finish time: 9:25am
+    Start time: 9:10am
 
-Actual time needed to complete: 15 minutes
+    Finish time: 9:25am
 
-Number and name of feature: 2. Filter Images
+    Actual time needed to complete: 15 minutes
 
-Estimate of time needed to complete: 30 minutes
+## Number and name of feature: 2. Filter Images
 
-Start time: 9:30am
+    Estimate of time needed to complete: 30 minutes
 
-Finish time: 10:00am
+    Start time: 9:30am
 
-Actual time needed to complete: 30 minutes
+    Finish time: 10:00am
 
-Number and name of feature: 3. Style
+    Actual time needed to complete: 30 minutes
 
-Estimate of time needed to complete: 20 minutes
+## Number and name of feature: 3. Style
 
-Start time: 10:00am
+    Estimate of time needed to complete: 20 minutes
 
-Finish time: 10:15am
+    Start time: 10:00am
 
-Actual time needed to complete: 15 minutes
+    Finish time: 10:15am
+
+    Actual time needed to complete: 15 minutes
+
+# Lab 3
+
