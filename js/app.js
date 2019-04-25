@@ -11,6 +11,8 @@ function Horn(hornObject) {
 function HornCollection() {
   this.hornList = [];
   this.keywords = [];
+  this.hornsAmount = [];
+  this.sortOptions = ['alphabetical', 'numberofhorns'];
 
   this.getHorns = () => {
     $.get('data/page-1.json', 'json')
@@ -20,10 +22,14 @@ function HornCollection() {
           if (!this.keywords.includes(animal.keyword)) {
             this.keywords.push(animal.keyword);
           }
+
+          this.hornsAmount.push(animal.horns);
         });
         this.renderHorns();
         this.renderfilterHorns();
+        this.renderSortHorns();
         filterHorn();
+        sortHorns(this.keywords, this.hornsAmount);
       });
   };
 
@@ -41,12 +47,19 @@ function HornCollection() {
   };
 
   this.renderfilterHorns = () => {
-    $(`<option>all</option>`).appendTo($('select'));
+    $(`<option>all</option>`).appendTo($('#keyword'));
     this.keywords.forEach(keyword => {
       const $option = $(`<option>${keyword}</option>`);
-      $option.appendTo('select');
+      $option.appendTo('#keyword');
     });
+  };
 
+  this.renderSortHorns = () => {
+    $(`<option>none</option>`).appendTo($('#sort'));
+    this.sortOptions.forEach(sortOption => {
+      const $option = $(`<option>${sortOption}</option>`);
+      $option.appendTo('#sort');
+    });
   };
 }
 
@@ -55,8 +68,8 @@ const Horns = new HornCollection();
 Horns.getHorns();
 
 function filterHorn() {
-  $('select').change(() => {
-    let $filterValue = $('select').val();
+  $('#keyword').change(() => {
+    let $filterValue = $('#keyword').val();
     if ($filterValue === 'all') {
       $('.image').show();
     } else {
@@ -66,4 +79,17 @@ function filterHorn() {
   });
 }
 
-
+function sortHorns(keywords, horns) {
+  $('#sort').change(() => {
+    let $sortValue = $('#sort').val();
+    if ($sortValue === 'none') {
+      $('.image').show();
+    } else if ($sortValue === 'alphabetical') {
+      $('.image').hide();
+      keywords.sort();
+    } else if ($sortValue === 'numberofhorns') {
+      $('.image').hide();
+      horns.sort((a, b) => a - b);
+    }
+  });
+}
