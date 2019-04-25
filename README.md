@@ -34,15 +34,15 @@
 
 # Lab 3
 
-Number and name of feature: 1. Pagination
+## Number and name of feature: 1. Pagination
 
-Estimate of time needed to complete: 30 minutes
-
-Start time: 9:45
-
-Finish time: 10:15
-
-Actual time needed to complete: 30 minutes
+    Estimate of time needed to complete: 30 minutes
+    
+    Start time: 9:45
+    
+    Finish time: 10:15
+    
+    Actual time needed to complete: 30 minutes
 
 Number and name of feature: 2. Templating
 
