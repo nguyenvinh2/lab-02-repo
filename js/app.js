@@ -42,7 +42,7 @@ function HornCollection() {
   };
 
   this.renderfilterHorns = () => {
-    $('#filter').empty();
+    $('#keyword').empty();
     $(`<option>all</option>`).appendTo($('#keyword'));
     this.keywords.forEach(keyword => {
       const $option = $(`<option>${keyword}</option>`);
@@ -89,7 +89,8 @@ function templateHandle(horn) {
   let context = {
     title: horn.title.toUpperCase(),
     path: horn.image,
-    keyword: horn.keyword
+    keyword: horn.keyword,
+    desc: horn.description
   };
 
   let $source = $('#entry').html();
