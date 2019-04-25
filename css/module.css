@@ -19,6 +19,10 @@
 .image {
   font-size: 10px;
   margin-bottom: 50px;
+  width: 30%;
+  padding: 5px;
+  margin-left: 2%;
+  background-color: aquamarine;
 }
 
 .footer-container {

@@ -7,13 +7,14 @@
 #horns {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
+  align-items: flex-start;
 }
 
 /* From Chris Coyer https://css-tricks.com/couple-takes-sticky-footer/ for sticky footer */
 html, body {
   height: 100%;
 }
+
 body {
   display: flex;
   flex-direction: column;

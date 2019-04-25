@@ -4,10 +4,14 @@ h2 {
   font-size: 18px;
 }
 
+p {
+  text-align: center;
+}
+
 .image p {
   font-size: 16px;
-  max-width: 300px;
   font-family: 'Dosis', sans-serif;
+  text-align: center;
 }
 
 body {
@@ -34,8 +38,8 @@ img {
   margin: 25px;
   outline: solid #8ec2ff 5px;
   background-color: darkgray;
-  width: auto;
-  height: 175px;
+  width: 80%;
+  height: auto;
   object-fit: scale-down;
 }
 
